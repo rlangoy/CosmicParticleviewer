@@ -1228,7 +1228,7 @@
   (gr_text "Trigger" (at 87.884 54.737) (layer "F.SilkS") (tstamp 2ec1386a-6ab4-4cbe-a000-70a739b9c4fc)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_text "Pico Readout for ITS Outer Barrel Model" (at 107.696 137.668) (layer "F.SilkS") (tstamp 4a8a4da5-7e69-47f0-b97f-d16ede24f15d)
+  (gr_text "Pico Readout for ITS Outer Barrel Module" (at 107.696 137.668) (layer "F.SilkS") (tstamp 4a8a4da5-7e69-47f0-b97f-d16ede24f15d)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "V1.0 Oct 2022 RUL" (at 99.568 139.7) (layer "F.SilkS") (tstamp 71208630-fc98-430c-9b88-6aa280eae14a)
