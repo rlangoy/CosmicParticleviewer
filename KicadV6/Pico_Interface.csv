@@ -1,0 +1,32 @@
+"Source:","C:\Users\runel\Documents\Skole\CERN\arduinopicoalpidereadout\KicadV6\Pico_Interface.kicad_sch"
+"Date:","Fri Oct 21 16:37:29 2022"
+"Tool:","Eeschema (6.0.8)"
+"Generator:","C:\Program Files\KiCad\6.0\bin\scripting\plugins/bom_csv_grouped_by_value.py"
+"Component Count:","11"
+
+"Individual Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","Farnell URL"
+"","","C1","10uF","Device:C_Polarized_Small","Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder","https://4donline.ihs.com/images/VipMasterIC/IC/KEME/KEME-S-A0006487387/KEME-S-A0006487387-1.pdf?hkey=52A5661711E402568146F3353EA87419","https://no.farnell.com/kemet/t491a106k016at/cap-10-f-16v-10-1206-smd/dp/1457414"
+"","","J0","Conn_02x06_Odd_Even","Connector_Generic:Conn_02x06_Odd_Even","Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header"
+"","","J1","Conn_02x06_Odd_Even","Connector_Generic:Conn_02x06_Odd_Even","Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header"
+"","","J2","Conn_02x06_Odd_Even","Connector_Generic:Conn_02x06_Odd_Even","Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header"
+"","","J3","Conn_02x06_Odd_Even","Connector_Generic:Conn_02x06_Odd_Even","Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header"
+"","","J4","Conn_01x03_Male","Connector:Conn_01x03_Male","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~",""
+"","","J5","Conn_01x02_Male","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~",""
+"","","J6","Conn_01x03_Male","Connector:Conn_01x03_Male","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~",""
+"","","J7","Conn_01x02_Male","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~",""
+"","","U1","Pico","MCU_RaspberryPi_and_Boards:Pico","RPi_Pico:RPi_Pico_SMD_TH","https://www.farnell.com/datasheets/3189214.pdf","https://no.farnell.com/raspberry-pi/raspberry-pi-pico/raspberry-pi-32bit-arm-cortex/dp/3643332?st=rp2040%20%20pico"
+"","","U2","NCP1117-3.3_SOT223","Regulator_Linear:NCP1117-3.3_SOT223","Package_TO_SOT_SMD:SOT-223-3_TabPin2","http://www.onsemi.com/pub_link/Collateral/NCP1117-D.PDF","https://no.farnell.com/on-semiconductor/ncp1117st33t3g/ic-linear-voltage-regulator/dp/1652366"
+
+
+
+"Collated Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","Farnell URL"
+"1","1","C1","10uF","Device:C_Polarized_Small","Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder","https://4donline.ihs.com/images/VipMasterIC/IC/KEME/KEME-S-A0006487387/KEME-S-A0006487387-1.pdf?hkey=52A5661711E402568146F3353EA87419","https://no.farnell.com/kemet/t491a106k016at/cap-10-f-16v-10-1206-smd/dp/1457414"
+"2","4","J0, J1, J2, J3","Conn_02x06_Odd_Even","Connector_Generic:Conn_02x06_Odd_Even","Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header","https://no.farnell.com/multicomp/mc-254-12-00-st-dip/connector-header-12pos-2row-2/dp/2843528?st=din%2041651%2012%20header"
+"3","2","J4, J6","Conn_01x03_Male","Connector:Conn_01x03_Male","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~",""
+"4","2","J5, J7","Conn_01x02_Male","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~",""
+"5","1","U1","Pico","MCU_RaspberryPi_and_Boards:Pico","RPi_Pico:RPi_Pico_SMD_TH","https://www.farnell.com/datasheets/3189214.pdf","https://no.farnell.com/raspberry-pi/raspberry-pi-pico/raspberry-pi-32bit-arm-cortex/dp/3643332?st=rp2040%20%20pico"
+"6","1","U2","NCP1117-3.3_SOT223","Regulator_Linear:NCP1117-3.3_SOT223","Package_TO_SOT_SMD:SOT-223-3_TabPin2","http://www.onsemi.com/pub_link/Collateral/NCP1117-D.PDF","https://no.farnell.com/on-semiconductor/ncp1117st33t3g/ic-linear-voltage-regulator/dp/1652366"
