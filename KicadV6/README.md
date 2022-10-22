@@ -1,6 +1,6 @@
 # Kicad Files for Raspberry Pico (RP2040) interface to Outer Barrel Module
 
-The PCB can be fabricated by uploading the gerber files (KicadV6\gerber\Pico_Interface.zip)  to a [PCB manufacurer] (https://jlcpcb.com/) 
+The PCB can be fabricated by uploading the gerber files (KicadV6\gerber\Pico_Interface.zip)  to a [PCB manufacurer](https://jlcpcb.com/) 
 
 
 BOM:
