@@ -382,8 +382,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
-      "vrml": ""
+      "step": "Pico_Interface.step",
+      "vrml": "3D_Model/Pico_Interface.wrl"
     },
     "page_layout_descr_file": ""
   },
