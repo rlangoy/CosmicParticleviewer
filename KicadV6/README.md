@@ -1,9 +1,19 @@
 # Kicad Files for Raspberry Pico (RP2040) interface to Outer Barrel Module
+## PCB Layout. 
+ ![PCB Layout](images/PCB_Overview.png?raw=true "PCB Layout")
+\
+The Mounting holes is designed for 4M Screws \
 
+## RP2040 Pinout 
+![PCB Layout](images/Pico_Pinout.png?raw=true "Pico Pinout")
+## +3,3V Source Selection
+![PCB Layout](images/3v3_Selection.png?raw=true "+3.3V Souce Selection")
+
+## Fabrication
 The PCB can be fabricated by uploading the gerber files (KicadV6\gerber\Pico_Interface.zip)  to a [PCB manufacurer](https://jlcpcb.com/) 
 
 
-BOM:
+## Bil of Materials (BOM)
 
 | Quantity | Reference(s) | Prod no             | Farnell order no | Description                                                |   |
 |----------|--------------|---------------------|------------------|------------------------------------------------------------|---|
