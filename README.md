@@ -1,7 +1,7 @@
 # Raspberry PI Pico Readout of OB Modules
 
 ## Project Content 
-### ArduinoV2
+### alpideInterface
 Microcontroller firmware source for [Arduino IDE 2.x](https://github.com/arduino/arduino-ide) \
 &nbsp; parses JSON command and sends it to the ALPIDES \
 &nbsp; More Info Available in the [README](/ArduinoV2/alpideInterface/README.md) 
