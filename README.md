@@ -12,6 +12,7 @@ PCB Design files for [Kicadv6] (https://www.kicad.org/) \
 
 ### Python
 Python ver 3.x Library and Examples for reading/accessing the Alpide OB Modules
+&nbsp; More Info Available in the [README](/Python/README.md)
 
 ## Getting started
 Transfer .u2f file to the RPI Pico
