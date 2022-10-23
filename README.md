@@ -2,10 +2,13 @@
 
 ## Project Content 
 ### ArduinoV2
-Microcontroller firmware source for [Arduino IDE 2.x](https://github.com/arduino/arduino-ide)
+Microcontroller firmware source for [Arduino IDE 2.x](https://github.com/arduino/arduino-ide) \
+&nbsp; parses JSON command and sends it to the ALPIDES \
+&nbsp; More Info Available in the [README](/ArduinoV2/alpideInterface/README.md) 
+
 ### KicadV6  
 PCB Design files for [Kicadv6] (https://www.kicad.org/) \
-More Info Available in the [README](/KicadV6/README.md) 
+&nbsp; More Info Available in the [README](/KicadV6/README.md) 
 
 ### Python
 Python ver 3.x Library and Examples for reading/accessing the Alpide OB Modules
