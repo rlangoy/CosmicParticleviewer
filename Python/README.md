@@ -15,4 +15,5 @@ Send Trigger & Reset signal to all ALPIDEs\ \
 Plot all pix hits \
 &nbsp;&nbsp;alpide.plotAllChips() \
 
-
+## Example
+[plotAplideHitmap.py](/plotAplideHitmap.py) - Plot ALPIDE Pixels Hits for all OB ALPIDES into a sigle plot
