@@ -15,7 +15,7 @@ In Arduino IDE 2.x \
         add the URL: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
  
  
-- Required Library ArduinoJson
+- Installation Library ArduinoJson
      Complete install instructions could be found [here](https://arduinojson.org/v6/doc/installation/) \
      Short Install instructions: \
        Open the Arduino Library Manager  [Ctrl] + [Shift] + I \
