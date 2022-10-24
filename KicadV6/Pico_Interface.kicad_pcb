@@ -940,12 +940,7 @@
       (net 2 "Net-(J4-Pad3)") (pinfunction "SWDIO") (pintype "bidirectional") (tstamp 85166e10-64f5-481d-a30e-893eb0293075))
     (pad "43" thru_hole oval (at 2.54 23.9) (size 1.7 1.7) (drill 1.02) (layers *.Cu *.Mask)
       (net 2 "Net-(J4-Pad3)") (pinfunction "SWDIO") (pintype "bidirectional") (tstamp 9f21352d-0e1a-45a5-8fce-58d6185ef2ce))
-    (model "C:/Users/ncara/OneDrive/IoT/Tools/KiCad/RP-Pico Libraries/Pico.wrl"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model "C:/Users/runel/Documents/Skole/CERN/KiCad-RP-Pico/RP-Pico Libraries/Pico.wrl"
+    (model "${KIPRJMOD}/lib/RP-Pico/Pico.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
