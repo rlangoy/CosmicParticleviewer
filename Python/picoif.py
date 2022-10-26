@@ -21,7 +21,7 @@ class OuterBarriel():
 
         ser = serial.Serial(serialPortName )  # open serial port
         self.ser=ser        
-
+        self.obMaskList={}
     
     
     def readevent(alpide,chipid):
@@ -142,7 +142,7 @@ class OuterBarriel():
         sAddr = ("%s" % addr).encode()
         sData = ("%s" % data).encode()
         
-        return   b'{"writeRegister": {"chipID":'+sId +b',"addr":'+sAddr+b',"data":'+sData +b'} }' ;
+        return   b'{"writeRegister": {"chipID":'+sId +b',"addr":'+sAddr+b',"data":'+sData +b'} } \r\n' ;
 
     def sendQueryWriteRegister(this,chipID,addr,data):
         this.ser.write(this.getQueryWriteRegister(chipID,addr,data))
@@ -156,6 +156,17 @@ class OuterBarriel():
     def sendReset(this):
         this.ser.write(b' {"sendRest": "True" }\r\n')
         ok=this.ser.readline()
+
+
+    def sendMaskPixels(this,chipID,lstPixels) :     
+        #lst=[(39, 490), (70, 258), (75, 254), (512, 439), (549, 64), (817, 503), (1007, 458)]
+        #str='{"maskPixels": ['
+        #for x,y in lst :
+        #    print(x,y)
+        #    
+        strMask= b'{"maskPixels": [{"chipID": 112, "x": 1 ,"y" : 350  },{"chipID": 112, "x": 1 ,"y" : 384  },{"chipID": 112, "x": 1 ,"y" : 386  },{"chipID": 112, "x": 0 ,"y" : 387  }]    } \r\n'
+        this.ser.write(strMask)
+
 
     # Get list from memeory struct via the serial port
     #  Debug Funn :)
@@ -210,8 +221,8 @@ class OuterBarriel():
 
     def plotChipPixels(this,chipID,newFig=False):
             lst=[]
-            lst=this.getPixelsFromSerialJsonCmd(chipID=chipID) #read data from given alpide
-            #lst=this.getPixelsFromMem()   #debug read px-data from memory
+            #lst=this.getPixelsFromSerialJsonCmd(chipID=chipID) #read data from given alpide
+            lst=this.getPixelsFromMem()   #debug read px-data from memory
             #lst=this.getPixelsFromCSV()   #debug read px-dayt from file
 
             if (lst[0]==0xFFFFFF) :
@@ -234,6 +245,11 @@ class OuterBarriel():
                 plt.pause(0.01)           
            # plt.show(break=False)
 
+    def getHitmap(this,chipID) :    
+        #lst=this.getPixelsFromSerialJsonCmd(chipID)
+        lst=this.getPixelsFromMem()   #debug read px-data from memory
+        return this.decodeevent(lst,3)
+
 
     def plotChips(this,alpideIdList):
         for chipID in alpideIdList :
@@ -243,9 +259,28 @@ class OuterBarriel():
         print("Finished Plotting pixels")
         plt.show()
         
+    def getChipIDList(this) :
+        return [0x70,0x71,0x72,0x73,0x74,0x75,0x76,0x78,0x79,0x7A,0x7B,0x7C,0x7D,0x7E]
 
     # Plots all the chips in the Outer Brarriel  Module
     def plotAllChips(this):
-        lst=[0x70,0x71,0x72,0x73,0x74,0x75,0x76,0x78,0x79,0x7A,0x7B,0x7C,0x7D,0x7E]
-        this.plotChips(lst)
-            
+        
+        this.plotChips(this.getChipIDList())
+    
+    #
+    # Run this twice to get correct mask
+    def updatePixelMask(this,alpideID,lstPixels):
+        
+        if( len(this.obMaskList)== 0) : # If list not created create it
+            for alpideID in this.getChipIDList :
+                obMaskList.update({alpideID:[]})
+            obMaskList[AlpideID]=lstPixels        # Insert list and return
+            return
+        
+        #  if not two equals in lists remove it
+        for item in obMaskList[AlpideID]:
+            if item not in lst2:
+              (obMaskList[AlpideID]).remove(item)
+
+        return
+    
