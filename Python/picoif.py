@@ -246,8 +246,8 @@ class OuterBarriel():
            # plt.show(break=False)
 
     def getHitmap(this,chipID) :    
-        #lst=this.getPixelsFromSerialJsonCmd(chipID)
-        lst=this.getPixelsFromMem()   #debug read px-data from memory
+        lst=this.getPixelsFromSerialJsonCmd(chipID)
+        #lst=this.getPixelsFromMem()   #debug read px-data from memory
         return this.decodeevent(lst,3)
 
 
@@ -269,18 +269,31 @@ class OuterBarriel():
     
     #
     # Run this twice to get correct mask
-    def updatePixelMask(this,alpideID,lstPixels):
+    def updatePixelMask(this,chipID,lstPixels):
         
         if( len(this.obMaskList)== 0) : # If list not created create it
-            for alpideID in this.getChipIDList :
-                obMaskList.update({alpideID:[]})
-            obMaskList[AlpideID]=lstPixels        # Insert list and return
+            for alpideID in this.getChipIDList() :
+                this.obMaskList.update({alpideID:[]})
+            this.obMaskList[chipID]=lstPixels        # Insert list and return
             return
         
         #  if not two equals in lists remove it
-        for item in obMaskList[AlpideID]:
-            if item not in lst2:
-              (obMaskList[AlpideID]).remove(item)
+        for item in this.obMaskList[chipID]:
+            if item not in lstPixels:
+              (this.obMaskList[chipID]).remove(item)
 
         return
+    
+    def createPixelMask(this,chipID) :
+        print('send Trigger & Reset signal to all ALPIDEs')
+        this.sendTrigger()
+        lst=this.getHitmap(chipID=chipID)
+        this.updatePixelMask(chipID,lst)
+
+        print('send Trigger & Reset signal to all ALPIDEs')
+        this.sendReset()
+        lst=this.getHitmap(chipID=chipID) 
+        this.updatePixelMask(chipID,lst)
+
+        
     
