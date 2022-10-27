@@ -295,5 +295,13 @@ class OuterBarriel():
         lst=this.getHitmap(chipID=chipID) 
         this.updatePixelMask(chipID,lst)
 
-        
+     def filterOutDeadPix(this,chipID,lst) :
+         if( len(this.obMaskList)== 0) : # If list not created create it
+            this.updatePixelMask(chipID,lst)
+          #
+          #
+          #  Implement func
+          
+         return lst
+     
     
