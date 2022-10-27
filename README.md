@@ -10,6 +10,11 @@ Microcontroller firmware source for [Arduino IDE 2.x](https://github.com/arduino
 PCB Design files for [Kicadv6] (https://www.kicad.org/) \
 &nbsp; More Info Available in the [README](/KicadV6/README.md) 
 
+### CAD  
+CAD Design files for [Freecad v0.21] (https://www.freecad.org/) \
+&nbsp; More Info Available in the [README](/CAD/README.md) 
+
+
 ### Python
 Python ver 3.x Library and Examples for reading/accessing the Alpide OB Modules \
 &nbsp; More Info Available in the [README](/Python/README.md)
