@@ -221,8 +221,8 @@ class OuterBarriel():
 
     def plotChipPixels(this,chipID,newFig=False):
             lst=[]
-            #lst=this.getPixelsFromSerialJsonCmd(chipID=chipID) #read data from given alpide
-            lst=this.getPixelsFromMem()   #debug read px-data from memory
+            lst=this.getPixelsFromSerialJsonCmd(chipID=chipID) #read data from given alpide
+            #lst=this.getPixelsFromMem()   #debug read px-data from memory
             #lst=this.getPixelsFromCSV()   #debug read px-dayt from file
 
             if (lst[0]==0xFFFFFF) :

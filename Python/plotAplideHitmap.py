@@ -1,11 +1,11 @@
 from picoif import OuterBarriel
 
-serialPort='COM95'  #'COM95
+serialPort= 'COM6' #'COM95'  #'COM6'  #'COM95
 print ("Open Serial port ",serialPort)
 alpide=OuterBarriel(serialPort)  
 
 #print('Reset All ALPIDEs')
-#alpide.sendReset()
+alpide.sendReset()
 
 #ALPIDE_REG_VTEMP=0x0609
 #print('Write to 0x12 a  ALPIDE 0x70 Resister ALPIDE_REG_VTEMP')
