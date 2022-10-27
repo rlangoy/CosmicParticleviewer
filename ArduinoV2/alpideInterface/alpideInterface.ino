@@ -98,8 +98,10 @@ void setup() {
   //Disable pix-on chip..
   // alpide.maskAllPixels(0x70,true);  
   alpide.sendTrigger();
-  //delay(100);   //Wait a bit after sending trigger ???
+  delay(1);   //Wait a bit after sending trigger ???
  // alpide.sendTrigger();
+
+ 
 }
 
 
@@ -172,6 +174,44 @@ void parseReadRegister(StaticJsonDocument<2000> doc,bool debug=false)
 }
 
 
+
+/*   parseMaskPixels
+ *  JSON Example input
+ *       single   pixel mask   {"maskPixels":  {"chipID": 112, "x": 100 ,"y" : 200  } }
+ *       multiple pixel mask   {"maskPixels": [{"chipID": 112, "x": 100 ,"y" : 200  },{"chipID": 112, "x": 101 ,"y" : 201  }]    }
+ */
+void parseMaskPixels(StaticJsonDocument<2000> doc)
+{
+ //Check if writeRegister exisists
+   if(doc.containsKey("maskPixels"))   //Command writeRegister
+    {
+      JsonArray array = doc["maskPixels"].as<JsonArray>();
+      
+      if(array.isNull())
+      {   // read single register
+          uint8_t chipID =doc["maskPixels"]["chipID"].as<int>();
+          uint16_t  x =doc["maskPixels"]["x"].as<int>();
+          int16_t   y =doc["maskPixels"]["dyata"].as<int>();
+          
+          alpide.addMaskPixel(chipID, x,y);
+          
+          SerialInUse.println("ok");          
+      }else
+      { // read multiple registers
+        int cnt=doc["maskPixels"].size();
+        for(int idx=0;idx<cnt;idx++)
+        {
+          uint8_t chipID =doc["maskPixels"][idx]["chipID"].as<int>();
+          uint16_t  x =doc["maskPixels"][idx]["x"].as<int>();
+          uint16_t  y =doc["maskPixels"][idx]["y"].as<int>();
+
+          alpide.addMaskPixel(chipID, x,y);          
+        }
+        SerialInUse.println("ok");          
+      }
+    } 
+}
+
 /*  parseWriteRegister - checks is JSON root-key is "readRegister"
  *   
  *  Executes ALPIDE read of register using chipID and address
@@ -205,9 +245,9 @@ void parseWriteRegister(StaticJsonDocument<2000> doc)
           uint16_t  addr =doc["writeRegister"][idx]["addr"].as<int>();
           int16_t   data =doc["writeRegister"][idx]["data"].as<int>();
        
-          int  ret=alpide.writeRegister(chipID, addr,data);
-          SerialInUse.println("ok");          
+          int  ret=alpide.writeRegister(chipID, addr,data);          
         }
+        SerialInUse.println("ok");          
       }
     }
 }
@@ -254,7 +294,6 @@ void parseGetPixelFrameData(StaticJsonDocument<2000> doc,bool debug=false)
           
        }
 
-
      //To be implemented...
      //alpide.dumpEventWords24Bit(0x70,25000);
     }
@@ -282,6 +321,7 @@ void parseSendTrigger(StaticJsonDocument<2000> doc,bool debug=false)
     }
 }
 
+
 void readJson()
 {
     StaticJsonDocument<2000> doc;
@@ -301,7 +341,7 @@ void readJson()
       parseSendTrigger(doc);
 
       parseGetPixelFrameData(doc);
-      
+      parseMaskPixels(doc);
 
       doc.clear();  //Empty doc (rdy for next commands..)
     } 
@@ -325,10 +365,11 @@ void loop() {
 
   //regReadWriteTest();
   readJson();
+  //delay(3000);
 
   //alpide.dumpEventWordsPy(SerialInUse,0x70,25000);
-  uint16_t x[100];
-  uint16_t y[100];
+  //uint16_t x[100];
+  //uint16_t y[100];
 
  // uint32_t buff[BUFF_SIZE];
     //delay(3000);
