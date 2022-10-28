@@ -291,17 +291,21 @@ class OuterBarriel():
         this.updatePixelMask(chipID,lst)
 
         print('send Trigger & Reset signal to all ALPIDEs')
-        this.sendReset()
+        this.sendTrigger()
         lst=this.getHitmap(chipID=chipID) 
         this.updatePixelMask(chipID,lst)
 
-     def filterOutDeadPix(this,chipID,lst) :
+    def getNewHits(this,chipID) :
          if( len(this.obMaskList)== 0) : # If list not created create it
-            this.updatePixelMask(chipID,lst)
-          #
-          #
-          #  Implement func
-          
-         return lst
+            this.createPixelMask(chipID)
+         
+         this.sendTrigger()
+         lstPixels=this.getHitmap(chipID=chipID) 
+
+         for item in this.obMaskList[chipID]:
+            if item in lstPixels:
+              lstPixels.remove(item)
+        
+         return lstPixels
      
     
