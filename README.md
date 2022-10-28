@@ -1,4 +1,5 @@
-# Raspberry PI Pico Readout of OB Modules
+# Raspberry Pico Readout of OB Modules
+ <img src="images/board.png" width="500">
 
 ## Project Content 
 ### alpideInterface
@@ -11,7 +12,7 @@ PCB Design files for [Kicadv6] (https://www.kicad.org/) \
 &nbsp; More Info Available in the [README](/KicadV6/README.md) 
 
 ### CAD  
-CAD Design files for [Freecad v0.21] (https://www.freecad.org/) \
+CAD Design files for PCB cover [Freecad v0.21] (https://www.freecad.org/) \
 &nbsp; More Info Available in the [README](/CAD/README.md) 
 
 
