@@ -10,7 +10,7 @@ To program the device enter the folowing :
 ```
 wget -qO arduino-cli.tar.gz https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz
 sudo tar xf arduino-cli.tar.gz -C /usr/local/bin arduino-cli
-m -rf arduino-cli.tar.gz
+rm -rf arduino-cli.tar.gz
 arduino-cli lib install ArduinoJson
  
 arduino-cli config init --additional-urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
