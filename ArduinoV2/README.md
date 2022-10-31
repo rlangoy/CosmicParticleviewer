@@ -6,7 +6,7 @@ More info on the firmware is available in the [/ArduinoV2/alpideInterface/README
 
 The microcontroller firmware could be buildt using Command-Line tools (Arduino CLI) or the Arduino IDE 
 
-### Installl Arduino CLI
+### Installl Arduino CLI Linux
 
 The Arduino CLI is used to compile and program the device from the command-line \
 To program the device enter the folowing :
