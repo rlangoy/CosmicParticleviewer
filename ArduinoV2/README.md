@@ -1,6 +1,6 @@
 ## Usage
 This folder contains the files nessesary to grenerate the microcontroller firmware \
-More Info Available in the [README](/alpideInterface/README.md) 
+More Info Available in the [README](/ArduinoV2/alpideInterface/README.md) 
 
 ## Installation
 
