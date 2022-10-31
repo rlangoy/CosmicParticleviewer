@@ -1,3 +1,7 @@
+## Usage
+This folder contains the files nessesary to grenerate the microcontroller firmware \
+More Info Available in the [README](/alpideInterface/README.md) 
+
 ## Installation
 
 The microcontroller firmware could be buildt using Command-Line tools (Arduino CLI) or the Arduino IDE 
