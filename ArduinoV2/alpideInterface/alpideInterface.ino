@@ -304,7 +304,7 @@ void parseSendReset(StaticJsonDocument<2000> doc,bool debug=false)
 {
     if(doc.containsKey("sendRest")) 
     {
-          alpide.sendTrigger();
+          alpide.sendReset();
           SerialInUse.println("ok");
           SerialInUse.flush();    
     }
