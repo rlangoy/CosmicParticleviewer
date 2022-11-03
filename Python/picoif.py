@@ -19,7 +19,7 @@ class OuterBarriel():
             connected.append(element.device)
         #print("Available COM ports: " + str(connected))
 
-        ser = serial.Serial(serialPortName )  # open serial port
+        ser = serial.Serial(port=serialPortName,timeout=3.0 )  # open serial port 3 sec read timout
         self.ser=ser        
         self.obMaskList={}
     
@@ -185,10 +185,21 @@ class OuterBarriel():
         
         lst=[]
         #Read serial data until stop was found
-        contLoop=True;
+        contLoop=True
         cnt=0
         cnt1000=0;
         while contLoop:
+            loops=0
+            #run loop until timeout or 3 bytes avaliable from the serial port
+            while(this.ser.in_waiting<=2) :
+                sleep(0.0002)
+                loops +=1
+                if(loops > 5000) :
+                    if(len(lst) >0 ) :
+                        lst.append(0xB0FFFF)   #Add end of data (trailer)
+                    print("--- getPixelsFromSerialJsonCmd ERR data timeout ------")                    
+                    return lst                
+            
             b24Word = this.ser.read(3) #Read 3 bytes
             word    = int.from_bytes(b24Word, byteorder='big', signed=False)
             lst.append(word)
@@ -204,7 +215,7 @@ class OuterBarriel():
             if((word & 0xB00000) ==0xB00000 ) :    #Break loop when Trailer(end-token) was found
                 #lst[cnt-1]=0xB0FFFF
                 contLoop=False
-        return lst;
+        return lst
 
     def getPixelsFromCSV(this):
         pixFrm = np.loadtxt("trgData.csv", delimiter=",")
@@ -278,28 +289,35 @@ class OuterBarriel():
             return
         
         #  if not two equals in lists remove it
-        for item in this.obMaskList[chipID]:
-            if item not in lstPixels:
-              (this.obMaskList[chipID]).remove(item)
+#         for item in this.obMaskList[chipID]:
+#             if item not in lstPixels:
+#               (this.obMaskList[chipID]).remove(item)
+        for item in lstPixels :
+            if item not in this.obMaskList[chipID]:
+                this.obMaskList[chipID].append(item)
 
         return
     
-    def createPixelMask(this,chipID) :
-        print('send Trigger & Reset signal to all ALPIDEs')
-        this.sendTrigger()
-        lst=this.getHitmap(chipID=chipID)
-        this.updatePixelMask(chipID,lst)
 
+    def createAllPixelMask(this) :
         print('send Trigger & Reset signal to all ALPIDEs')
-        this.sendTrigger()
-        lst=this.getHitmap(chipID=chipID) 
-        this.updatePixelMask(chipID,lst)
+
+        #do 5 scans for detecting noisy pix
+        for i in range(0,5):
+            this.sendTrigger()
+            print("Send Trigger")
+            for chipID in this.getChipIDList() :
+                lst=this.getHitmap(chipID=chipID)
+                print("Update Mask for 0x%X"%chipID )
+                this.updatePixelMask(chipID,lst)
+
+
 
     def getNewHits(this,chipID) :
          if( len(this.obMaskList)== 0) : # If list not created create it
             this.createPixelMask(chipID)
          
-         this.sendTrigger()
+         #this.sendTrigger()
          lstPixels=this.getHitmap(chipID=chipID) 
 
          for item in this.obMaskList[chipID]:
