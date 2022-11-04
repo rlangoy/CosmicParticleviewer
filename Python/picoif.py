@@ -45,7 +45,9 @@ class OuterBarriel():
     #   decode=2 - Decode ony  short-data
     #   decode=3   Decode long- & short-data
     def decodeevent(this,words,decode=3):
-        assert len(words)>0
+        #assert len(words)>0
+        if(len(words)<0) :
+            return []
         reg=None
         hits=[]
         if   words[0]&0xF000FF==0xE000FF: # chip empty
@@ -241,6 +243,9 @@ class OuterBarriel():
                 
             else: 
                 hitMap = this.decodeevent(lst,3)     # Decode to pixel points  [(x0,y0), (x1,y1) ,... ]
+                if (len(hitMap)<=0) :   # If no data dont plot it :)
+                    return
+                
                 #plt.figure(cnt+1)
                 figName="Himap from all Aplides combined"
                 if (newFig) :
@@ -253,12 +258,13 @@ class OuterBarriel():
                 plt.title(figName)
                 plt.draw()
                 #cnt +=1
-                plt.pause(0.01)           
-           # plt.show(break=False)
+                plt.pause(0.01)
+            if (newFig) :
+              plt.show()
 
     def getHitmap(this,chipID) :    
         lst=this.getPixelsFromSerialJsonCmd(chipID)
-        #lst=this.getPixelsFromMem()   #debug read px-data from memory
+        #lst=this.getPixelsFromMem()   #debug read px-data from memory        
         return this.decodeevent(lst,3)
 
 
