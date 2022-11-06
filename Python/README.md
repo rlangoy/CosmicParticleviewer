@@ -8,8 +8,6 @@ Initiate lib by specifying selial port using pySerial \
 &nbsp;&nbsp; alpide=OuterBarriel(serialPort) \
 Reset ALPIDES \
 &nbsp;&nbsp;alpide.sendReset() \
-Reset ALPIDES \
-&nbsp;&nbsp;alpide.sendReset() \
 Send Trigger & Reset signal to all ALPIDEs\ \
 &nbsp;&nbsp; alpide.sendTrigger() \
 Plot all pix hits \
