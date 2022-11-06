@@ -1,5 +1,11 @@
-# Raspberry Pico Readout of OB Modules
+# Cosmic particle readout system overview
+ <img src="images/overview.drawio.svg" width="800">
+ 
+## Readout Hardware
  <img src="images/board.png" width="500">
+ 
+Schematics and PCB layout is found inn the kicadv6 folder   \
+Design files for the cover is found in the the CAD foldder 
 
 ## Project Content 
 ### alpideInterface
