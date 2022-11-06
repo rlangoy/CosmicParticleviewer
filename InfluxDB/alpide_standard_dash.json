@@ -1,0 +1,424 @@
+{
+ "meta": {
+  "version": "1",
+  "type": "dashboard",
+  "name": "Alpide Standard dash-Template",
+  "description": "template created from dashboard: Alpide Standard dash"
+ },
+ "content": {
+  "data": {
+   "type": "dashboard",
+   "attributes": {
+    "name": "Alpide Standard dash",
+    "description": ""
+   },
+   "relationships": {
+    "label": {
+     "data": [
+      {
+       "type": "label",
+       "id": "0a37602c894dd000"
+      }
+     ]
+    },
+    "cell": {
+     "data": [
+      {
+       "type": "cell",
+       "id": "0a325c04a56a5000"
+      },
+      {
+       "type": "cell",
+       "id": "0a37904835aa5000"
+      },
+      {
+       "type": "cell",
+       "id": "0a3b71512daa5000"
+      },
+      {
+       "type": "cell",
+       "id": "0a3b724759aa5000"
+      }
+     ]
+    },
+    "variable": {
+     "data": []
+    }
+   }
+  },
+  "included": [
+   {
+    "type": "label",
+    "id": "0a37602c894dd000",
+    "attributes": {
+     "name": "rune",
+     "properties": {
+      "color": "#326BBA",
+      "description": "test"
+     }
+    }
+   },
+   {
+    "id": "0a325c04a56a5000",
+    "type": "cell",
+    "attributes": {
+     "x": 9,
+     "y": 0,
+     "w": 3,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0a325c04a56a5000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0a37904835aa5000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 0,
+     "w": 8,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0a37904835aa5000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0a3b71512daa5000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 3,
+     "w": 6,
+     "h": 5
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0a3b71512daa5000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0a3b724759aa5000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 3,
+     "w": 6,
+     "h": 5
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0a3b724759aa5000"
+      }
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0a325c04a56a5000",
+    "attributes": {
+     "name": "Numbers of  Hits using time-range",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "gauge",
+      "queries": [
+       {
+        "text": "from(bucket: \"AlpideData\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] == \"X\" or r[\"_field\"] == \"Y\")  \n  |> group()\n  |> count() \n  |> map(fn: (r) => ({r with _value: int(v: r._value) /2 }))\n  \n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "prefix": "",
+      "tickPrefix": "",
+      "suffix": "",
+      "tickSuffix": "",
+      "colors": [
+       {
+        "id": "0",
+        "type": "min",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       },
+       {
+        "id": "1",
+        "type": "max",
+        "hex": "#9394FF",
+        "name": "comet",
+        "value": 100
+       }
+      ],
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0a37904835aa5000",
+    "attributes": {
+     "name": "Alpides using time range",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "scatter",
+      "queries": [
+       {
+        "text": "from(bucket: \"AlpideData\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] == \"X\" or r[\"_field\"] == \"Y\")  \n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> keep(columns: [\"X\",\"Y\"])\n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "colors": [
+       "#31C0F6",
+       "#BC00B8",
+       "#FF7E27"
+      ],
+      "fillColumns": [],
+      "symbolColumns": [],
+      "xColumn": "X",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "Y",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "xDomain": [
+       0,
+       7000
+      ],
+      "yDomain": [
+       0,
+       1000
+      ],
+      "xAxisLabel": "",
+      "yAxisLabel": "",
+      "xPrefix": "",
+      "xSuffix": "",
+      "yPrefix": "",
+      "ySuffix": "",
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "timeFormat": "",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0a3b71512daa5000",
+    "attributes": {
+     "name": "Last Minutte (1min intervall)",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "scatter",
+      "queries": [
+       {
+        "text": "from(bucket: \"AlpideData\")\n  |> range(start: -1m)\n  |> filter(fn: (r) => r[\"_field\"] == \"X\" or r[\"_field\"] == \"Y\")  \n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> keep(columns: [\"X\",\"Y\"])\n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "colors": [
+       "#31C0F6",
+       "#BC00B8",
+       "#FF7E27"
+      ],
+      "fillColumns": [],
+      "symbolColumns": [],
+      "xColumn": "X",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "Y",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "xDomain": [
+       0,
+       7000
+      ],
+      "yDomain": [
+       0,
+       1000
+      ],
+      "xAxisLabel": "",
+      "yAxisLabel": "",
+      "xPrefix": "",
+      "xSuffix": "",
+      "yPrefix": "",
+      "ySuffix": "",
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "timeFormat": "",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0a3b724759aa5000",
+    "attributes": {
+     "name": "2  - Minutte (1min intervall)",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "scatter",
+      "queries": [
+       {
+        "text": "from(bucket: \"AlpideData\")\n  |> range(start: -2m, stop: -1m)\n  |> filter(fn: (r) => r[\"_field\"] == \"X\" or r[\"_field\"] == \"Y\")  \n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> keep(columns: [\"X\",\"Y\"])\n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "colors": [
+       "#31C0F6",
+       "#BC00B8",
+       "#FF7E27"
+      ],
+      "fillColumns": [],
+      "symbolColumns": [],
+      "xColumn": "X",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "Y",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "xDomain": [
+       0,
+       7000
+      ],
+      "yDomain": [
+       0,
+       1000
+      ],
+      "xAxisLabel": "",
+      "yAxisLabel": "",
+      "xPrefix": "",
+      "xSuffix": "",
+      "yPrefix": "",
+      "ySuffix": "",
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "timeFormat": "",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   }
+  ]
+ },
+ "labels": []
+}
