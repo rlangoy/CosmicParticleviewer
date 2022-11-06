@@ -1,5 +1,7 @@
 # Arduino Pico Readout Firmware
 
+The Files ALPIDE.h & ALPIDE.cpp is removed due to properitary transfer protocol...
+
 The Firmware is buildt for Arduino IDE 2.0 
    -  Code not specific for any hardware, but tested on RPI Pico (RP2040)
    -  Designed for the PCB board "Raspberry Pico (RP2040) interface to Outer Barrel Module"
