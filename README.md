@@ -1,5 +1,5 @@
 # Cosmic particle readout system overview
- <img src="images/overview.drawio.svg" width="800">
+ <img src="images/overview.drawio.png" width="700">
  
 ## Readout Hardware
  <img src="images/board.png" width="500">
