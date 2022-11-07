@@ -26,8 +26,6 @@ CAD Design files for PCB cover [Freecad v0.21] (https://www.freecad.org/) \
 Python ver 3.x Library and Examples for reading/accessing the Alpide OB Modules \
 &nbsp; More Info Available in the [README](/Python/README.md)
 
-
-
 ### InfluxDB
 InfluxDB 2.x Python3 script for inserting ALPIDE data into the daatabase and Script for building the Dashboard
 
