@@ -2,8 +2,8 @@
 This folder contains the files needed to insert data into InfluxDB .
 
 ## InfluxDB Installation
-Complete install instructions is available from the influxdata  [install page](https://docs.influxdata.com/influxdb/v2.5/install/)
-Lastest software could be downloaded from the influxdata's github [release page ](https://github.com/influxdata/influxdb/releases) \
+Complete install instructions is available from the influxdata  [install page](https://docs.influxdata.com/influxdb/v2.5/install/) \
+Lastest software could be downloaded from the influxdata's github [release page ](https://github.com/influxdata/influxdb/releases) 
 
 ## Insert APIDE Data into the page.
 Edit the file insertToDb.py and replase token/org/bucket and update the serialPort
